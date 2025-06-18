@@ -1,0 +1,6 @@
+beautifulsoup4
+requests
+python-dotenv
+qdrant-client
+tqdm
+numpy 

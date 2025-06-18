@@ -1,0 +1,17 @@
+{
+  "OmegAvail™ Synergy": { "category": "heart-health", "tier": "good" },
+  "OmegAvail™ Liquid": { "category": "heart-health", "tier": "better" },
+  "OmegAvail™ Hi-Po": { "category": "heart-health", "tier": "best" },
+  "Vitamin D Supreme": { "category": "general-wellness", "tier": "good" },
+  "Complete Mineral Complex": { "category": "general-wellness", "tier": "better" },
+  "Twice Daily Multi™": { "category": "general-wellness", "tier": "best" },
+  "Zinc Supreme": { "category": "immune-support", "tier": "good" },
+  "Immunitone Plus™": { "category": "immune-support", "tier": "better" },
+  "ImmunoMod-A™": { "category": "immune-support", "tier": "best" },
+  "Digestzymes™": { "category": "digestion", "tier": "good" },
+  "GI Microb-X™": { "category": "digestion", "tier": "better" },
+  "GI Revive™": { "category": "digestion", "tier": "best" },
+  "Acetyl L-Carnitine": { "category": "brain-focus", "tier": "good" },
+  "Brain Vitale™": { "category": "brain-focus", "tier": "better" },
+  "CogniAid™": { "category": "brain-focus", "tier": "best" }
+}
