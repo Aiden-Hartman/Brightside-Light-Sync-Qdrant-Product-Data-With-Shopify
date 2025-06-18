@@ -41,22 +41,17 @@ async def root():
 
 @app.post("/sync-products")
 async def sync_products(
-    request: Request,
     api_key: str = Depends(verify_api_key)
 ):
     try:
         # Log the incoming webhook
         logger.info("Received sync request")
         
-        # Optional: Read and validate webhook payload if needed
-        payload = await request.json()
-        logger.info(f"Webhook payload: {payload}")
-        
-        # Run the sync process
-        sync_all()
+        # Run the sync process and get stats
+        stats = sync_all()
         
         return JSONResponse(
-            {"status": "success", "message": "Products synchronized successfully"},
+            {"status": "success", "message": "Products synchronized successfully", **stats},
             status_code=200
         )
     except Exception as e:

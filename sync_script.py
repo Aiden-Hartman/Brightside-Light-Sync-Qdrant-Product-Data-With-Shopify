@@ -150,12 +150,25 @@ def upload_to_qdrant(products):
     logger.info(f"✅ Uploaded {len(products)} products to Qdrant collection '{COLLECTION_NAME}'")
 
 def sync_all():
-    """Main function to run the complete sync process."""
+    """Main function to run the complete sync process and return stats for reporting."""
     try:
         raw_products = fetch_products()
-        enriched = [enrich_product(p) for p in raw_products]
+        mapping_titles = set(METADATA_LOOKUP.keys())
+        enriched = []
+        found_titles = set()
+        for p in raw_products:
+            title = p.get("title", "").strip()
+            if title in mapping_titles:
+                enriched.append(enrich_product(p))
+                found_titles.add(title)
+        missing_titles = list(mapping_titles - found_titles)
         upload_to_qdrant(enriched)
-        return True
+        return {
+            "shopify_product_count": len(raw_products),
+            "mapping_expected_count": len(mapping_titles),
+            "mapping_found_count": len(found_titles),
+            "missing_in_shopify": missing_titles
+        }
     except Exception as e:
         logger.error(f"❌ Sync failed: {str(e)}")
         raise 
